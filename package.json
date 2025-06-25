@@ -1,7 +1,7 @@
 {
   "name": "teachgood",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,8 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mayankgangwr/TeachGood.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mayankgangwr/TeachGood/issues"
+  },
+  "homepage": "https://github.com/Mayankgangwr/TeachGood#readme",
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.10",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

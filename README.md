@@ -1,69 +1,111 @@
-# React + TypeScript + Vite
+### 📄 `README.md`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+````md
+# TeachGood
 
-Currently, two official plugins are available:
+TeachGood is a modern React project built using **Vite**, **TypeScript**, and **TailwindCSS**, designed for scalable and performant frontend development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚛️ React 19
+- ⚡ Vite 7
+- 🎨 TailwindCSS 4
+- 🧠 TypeScript 5
+- 🧹 ESLint for linting
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/Mayankgangwr/TeachGood.git
+cd TeachGood
+npm install
+````
+
+---
+
+## 💻 Development Server
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧱 Production Build
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+---
+
+## 🧹 Lint the Code
+
+```bash
+npm run lint
+```
+
+---
+
+## 📁 Project Structure
+
+```
+TeachGood/
+├── public/               # Static assets
+├── src/                  # Source files
+│   ├── App.tsx           # Main app component
+│   ├── main.tsx          # Entry point
+│   └── index.css         # TailwindCSS styles
+├── index.html            # HTML entry point
+├── tailwind.config.js    # Tailwind config
+├── vite.config.ts        # Vite config
+├── tsconfig.json         # TypeScript config
+└── package.json          # NPM metadata
+```
+
+---
+
+## 🔗 Repository Info
+
+* **GitHub:** [github.com/Mayankgangwr/TeachGood](https://github.com/Mayankgangwr/TeachGood)
+* **Issues:** [Report bugs here](https://github.com/Mayankgangwr/TeachGood/issues)
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Contribution
+
+Feel free to fork, clone, and submit pull requests. All contributions are welcome!
+
+```
+
+---
+
+Let me know if you also want:
+- A `CONTRIBUTING.md` guide
+- A live demo badge
+- Auto-deployment instructions (e.g., GitHub Pages, Vercel, Netlify)
+
+I'll be happy to help!
 ```
