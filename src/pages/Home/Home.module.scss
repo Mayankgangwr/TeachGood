@@ -1,0 +1,16 @@
+.Home {
+
+    >.LeftPanel {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        >.WelcomeHeader {}
+    }
+
+    >.RightPanel {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}

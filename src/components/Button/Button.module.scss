@@ -1,0 +1,17 @@
+   .button {
+       align-items: center;
+       box-sizing: border-box;
+       display: inline-flex;
+       justify-content: center;
+       text-decoration: none;
+       vertical-align: middle;
+       margin: 0;
+       overflow: hidden;
+       height: fit-content;
+       font-family: "Segoe UI", system-ui, sans-serif;
+       outline: none;
+       border: 1px solid transparent;
+       transition-duration: 150ms;
+       transition-property: background, border, color;
+       transition-timing-function: ease-in-out;
+   }

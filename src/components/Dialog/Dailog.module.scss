@@ -1,0 +1,51 @@
+.Dailog {
+    inset: 0px;
+    padding: 16px;
+    margin: auto;
+    overflow: unset;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    display: block;
+    user-select: unset;
+    visibility: unset;
+    position: fixed;
+    height: fit-content;
+    max-width: 600px;
+    max-height: 100dvh;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #242424;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12), 0 32px 64px rgba(0, 0, 0, 0.14);
+
+    >.Body {
+        overflow: unset;
+        display: grid;
+        max-height: calc(-48px + 100dvh);
+        box-sizing: border-box;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr 1fr auto;
+
+        >.Content {
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+            grid-area: 2 / 1 / 2 / 4;
+        }
+
+        >.Footer {
+            grid-column-start: 2;
+            justify-self: end;
+            gap: 8px;
+            height: fit-content;
+            box-sizing: border-box;
+            display: flex;
+            grid-row: 3 / 3;
+        }
+    }
+}
+
+.button:disabled {
+    background-color: #f9f9f9;
+    color: #a6a6a6;
+    border-color: #e0e0e0;
+    cursor: not-allowed;
+}

@@ -1,0 +1,128 @@
+.Container {
+    width: 100%;
+}
+
+.NavItem {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    color: var(--mantine-color-text);
+    font-size: var(--mantine-font-size-sm);
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    touch-action: manipulation;
+
+    &:hover {
+        color: var(--mantine-color-black);
+        background-color: var(--mantine-color-gray-0);
+    }
+
+    >.Content {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 16px;
+
+        >.Icons {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(34, 139, 230, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-radius: 4px;
+            color: rgb(34, 139, 230);
+
+
+            >svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        >.Label {
+            font-size: 14px;
+            line-height: 21.7px;
+            font-weight: 500;
+        }
+    }
+}
+
+.NestedNavItem {
+    >.NavItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 16px;
+        color: var(--mantine-color-text);
+        font-size: var(--mantine-font-size-sm);
+        appearance: none;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+        touch-action: manipulation;
+
+        &:hover {
+            color: var(--mantine-color-black);
+            background-color: var(--mantine-color-gray-0);
+        }
+
+        >.Content {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 16px;
+
+            >.Icons {
+                width: 30px;
+                height: 30px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(34, 139, 230, 0.1);
+                border: 1px solid rgba(0, 0, 0, 0);
+                border-radius: 4px;
+                color: rgb(34, 139, 230);
+
+
+                >svg {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+
+            >.Label {
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: 500;
+            }
+        }
+    }
+    >.NestedLinks{
+        display: block;
+        box-sizing: border-box;
+        >.Link{
+            display: block;
+            color: rgb(73, 80, 87);
+            border-left: 1px solid rgb(222, 226, 230);
+            margin-left: 32px;
+            padding: 10px 16px;
+            font-size: 14px;
+            line-height: 21.7px;
+            font-weight: 500;
+            &:hover{
+                color: rgb(0, 0, 0);
+                background-color: rgb(248, 249, 250);
+            }
+        }
+    }
+}
+
