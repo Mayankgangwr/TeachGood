@@ -26,7 +26,7 @@ const ActiveCourses: React.FC = () => {
     <div className="w-full rounded-2xl bg-white shadow-sm border border-gray-100 p-4">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-semibold text-gray-800">Active Courses</h3>
+        <h3 className="text-base font-semibold text-gray-800">Active Courses</h3>
         <button className="text-xs text-indigo-600 hover:underline">See All</button>
       </div>
 

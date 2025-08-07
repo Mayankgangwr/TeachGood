@@ -10,11 +10,23 @@ const Layout: React.FC = () => {
     return (
         <AuthProvider>
             {/* Mobile Layout */}
-            <div className="lg:hidden">
-                <MobileHeader />
-                <Outlet />
-                <MobileMenuNavbar/>
+            <div className="lg:hidden flex flex-col h-screen">
+                {/* Fixed Top Header */}
+                <div className="fixed top-0 left-0 right-0 z-50">
+                    <MobileHeader />
+                </div>
+
+                {/* Scrollable Main Content */}
+                <div className="flex-1 mt-[56px] mb-[60px] overflow-y-auto">
+                    <Outlet />
+                </div>
+
+                {/* Fixed Bottom Menu */}
+                <div className="fixed bottom-0 left-0 right-0 z-50">
+                    <MobileMenuNavbar />
+                </div>
             </div>
+
 
             {/* Desktop Layout */}
             <div className="hidden lg:flex w-full h-full">

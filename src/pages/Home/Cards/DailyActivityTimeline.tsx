@@ -83,7 +83,7 @@ const DailyActivityTimeline: React.FC = () => {
             {/* Header */}
             <div className="mb-4 flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-semibold text-gray-800">Daily Activity</h3>
+                    <h3 className="text-base font-semibold text-gray-800">Daily Activity</h3>
                     <p className="text-xs text-gray-500">Today • {today}</p>
                 </div>
                 <div className="text-xs text-gray-500">

@@ -38,10 +38,10 @@ export const teacherSidebarItems: IMenuItem[] = [
     icon: Users,
     label: 'My Students',
     path: '/teacher/students',
-    links: [
-      { label: 'Student List', link: '/teacher/students', icon: GraduationCap },
-      { label: 'Performance', link: '/teacher/students/performance', icon: BarChart3 }
-    ]
+    // links: [
+    //   { label: 'Student List', link: '/teacher/students', icon: GraduationCap },
+    //   { label: 'Performance', link: '/teacher/students/performance', icon: BarChart3 }
+    // ]
   },
   {
     icon: CalendarCheck,
@@ -52,19 +52,19 @@ export const teacherSidebarItems: IMenuItem[] = [
     icon: ClipboardList,
     label: 'Assignments',
     path: '/teacher/assignments',
-    links: [
-      { label: 'All Assignments', link: '/teacher/assignments', icon: ListChecks },
-      { label: 'Create Assignment', link: '/teacher/assignments/create', icon: PlusCircle }
-    ]
+    // links: [
+    //   { label: 'All Assignments', link: '/teacher/assignments', icon: ListChecks },
+    //   { label: 'Create Assignment', link: '/teacher/assignments/create', icon: PlusCircle }
+    // ]
   },
   {
     icon: BookOpen,
     label: 'Courses',
     path: '/teacher/courses',
-    links: [
-      { label: 'My Courses', link: '/teacher/courses', icon: BookOpen },
-      { label: 'Add Course', link: '/teacher/courses/add', icon: PlusCircle }
-    ]
+    // links: [
+    //   { label: 'My Courses', link: '/teacher/courses', icon: BookOpen },
+    //   { label: 'Add Course', link: '/teacher/courses/add', icon: PlusCircle }
+    // ]
   },
   {
     icon: Settings,
@@ -88,10 +88,10 @@ export const studentSidebarItems: IMenuItem[] = [
     icon: ClipboardList,
     label: 'Assignments',
     path: '/student/assignments',
-    links: [
-      { label: 'View Assignments', link: '/student/assignments', icon: FileText },
-      { label: 'Submit Assignment', link: '/student/assignments/submit', icon: Send }
-    ]
+    // links: [
+    //   { label: 'View Assignments', link: '/student/assignments', icon: FileText },
+    //   { label: 'Submit Assignment', link: '/student/assignments/submit', icon: Send }
+    // ]
   },
   {
     icon: Calendar,

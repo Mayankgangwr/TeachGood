@@ -69,7 +69,7 @@ const UpcomingTasks: React.FC = () => {
                 </svg>
             </div> */}
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">Upcoming Tasks</h2>
+                <h3 className="text-base font-semibold text-gray-800">Upcoming Assignments</h3>
                 <button className="text-sm text-indigo-600 hover:underline font-medium">See All</button>
             </div>
 

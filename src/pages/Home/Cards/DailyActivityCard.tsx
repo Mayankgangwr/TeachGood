@@ -44,7 +44,7 @@ const DailyActivityCard = () => {
         <div className="w-full bg-white rounded-2xl p-4 border border-gray-100 shadow-sm">
             {/* Header */}
             <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                <h3 className="text-base font-semibold text-gray-800 flex items-center gap-2">
                     <BookOpenCheck size={16} /> Daily Activity
                 </h3>
                 <span className="text-xs text-gray-500">Updated today</span>

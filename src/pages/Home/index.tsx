@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { Container } from "../../components";
 import Styles from "./Home.module.scss";
 import clsx from "clsx";
@@ -10,8 +10,31 @@ import UpcomingClasses from "./Cards/UpcomingClasses";
 import SummeryCard from "./Cards/SummeryCard";
 import LearningTimeReportCard from "./Cards/LearningTimeReportCard";
 import DailyActivityTimeline from "./Cards/DailyActivityTimeline";
+import UpdatesPanel from "./Cards/UpdatesPanel";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux.hook";
+import { getClasses } from "../../features/class-session/class-session.action";
 
 const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { classes, fetched, user } = useAppSelector((state) => ({
+    classes: state.classSession.classes,
+    fetched: state.classSession.fetched,
+    user: state.auth.user
+  }));
+
+  const hasDispatched = useRef(false); // NEW GUARD
+
+useEffect(() => {
+  console.log("Effect called:", { userId: user?._id, classesLength: classes.length, fetched });
+
+  if (user && !fetched && !hasDispatched.current) {
+    hasDispatched.current = true;
+    dispatch(getClasses({ studentId: user._id }));
+  }
+}, [user, fetched]);
+
+
+
   return (
     <Container>
       {/* Wrapper for 2 panels - responsive flex layout */}
@@ -22,12 +45,12 @@ const HomePage: React.FC = () => {
 
           {/* Responsive grid: 1 col on mobile, 3 cols on md+ */}
           <div className="grid grid-cols-1 md:grid-cols-3  gap-2 md:gap-3">
-            <PerformanceCard />
-            <div className="block md:hidden">
-              <DailyActivityTimeline />
+            <UpcomingClasses />
+            <div className="flex md:hidden  flex-col gap-2">
+              <UpcomingTasks />
             </div>
-            <ActiveCourses />
             <LearningTimeReportCard />
+            <ActiveCourses />
           </div>
           <div className="hidden md:block">
             <SummeryCard />
@@ -36,8 +59,8 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Right Panel - 100% on mobile, 25% on md+ */}
-        <div className={clsx(Styles.RightPanel, "w-full gap-2 md:gap-3 md:w-1/4")}>
-          <UpcomingClasses />
+        <div className={clsx(Styles.RightPanel, "hidden md:flex w-full gap-2 md:gap-3 md:w-1/4")}>
+          <UpdatesPanel />
           <UpcomingTasks />
         </div>
       </div>

@@ -2,7 +2,7 @@ import { BarChart3 } from "lucide-react";
 import React from "react";
 
 const PerformanceCard: React.FC = () => {
-    const bars = [10, 20, 35, 50, 40, 15, 60]; // Bar heights in %
+    const bars = [10, 20, 35, 50, 40, 15, 60];
 
     return (
         <div className="w-full rounded-2xl bg-white shadow-sm border border-gray-100 p-4 relative overflow-hidden hidden md:block">
@@ -12,7 +12,7 @@ const PerformanceCard: React.FC = () => {
             </div>
 
             {/* Title and description */}
-            <h3 className="text-sm font-semibold text-gray-800">Performance</h3>
+            <h3 className="text-base font-semibold text-gray-800">Performance</h3>
             <p className="text-xs text-gray-500 mt-1 mb-4">7 Courses Completed</p>
 
             {/* Responsive Bar Chart */}

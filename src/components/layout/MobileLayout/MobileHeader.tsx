@@ -2,11 +2,11 @@ import React from "react";
 import Logo from "../../../assets/Icons/Logo";
 const MobileHeader: React.FC = () => {
 	return (
-		<div className="w-full px-4 py-3 bg-white shadow-sm flex items-center justify-between">
+		<div className="w-full px-4 py-3 bg-white shadow-sm flex items-center justify-between fixed">
 			{/* Left Section */}
 			<div className="flex items-center gap-2">
 				{/* Hamburger Icon */}
-				<div
+				{/* <div
 					className="w-6 h-6 text-gray-700 cursor-pointer"
 					onClick={() => alert("Open Menu")}
 				>
@@ -19,7 +19,7 @@ const MobileHeader: React.FC = () => {
 					>
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
 					</svg>
-				</div>
+				</div> */}
 
 				<Logo className=" text-2xl" />
 			</div>
