@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { LoginPage, HomePage, MyLearningPage } from './pages'
 import { AuthLayout, Layout } from './components'
 import ToastManager from './components/Toaster'
+import SingleAssignment from './pages/Assignments/SingleAssignment'
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      {
+        path: "assignments/:assignmentId",
+        element: (
+          <AuthLayout authentication={true}>
+            <SingleAssignment />
+          </AuthLayout>
+        )
+      }
     ]
   },
   {

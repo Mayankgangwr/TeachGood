@@ -58,6 +58,9 @@ const Dialog: React.FC<DialogProps> = ({
                 <div className={`${Styles.Content} m-0.5 p-0.5 text-base font-normal min-h-8 overflow-y-auto`}>
                     {description}
                 </div>
+                <div className={`${Styles.Content} m-0.5 p-0.5 text-base font-normal min-h-8 overflow-y-auto`}>
+                    {children}
+                </div>
                 <div className={`${Styles.Footer} m-0.5 p-0.5 text-sm font-normal min-h-8 overflow-y-auto`}>
                     {actions || null}
                 </div>

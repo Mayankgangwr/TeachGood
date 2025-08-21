@@ -34,7 +34,7 @@ const MobileMenuNavbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-md sm:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-md">
       <div className="relative">
         <ul className="flex justify-between items-center px-4 py-2">
           {sidebarItems.map((item, index) => {
