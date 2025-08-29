@@ -18,7 +18,6 @@ import {
     getAssignmentById,
     submitAssignment as submitAssignmentAPI,
 } from "../../features/assignment/assignment.action";
-import FilePreview from "reactjs-file-preview";
 
 
 
