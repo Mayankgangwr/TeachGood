@@ -42,12 +42,6 @@ export class AuthController {
         }
     }
 
-    async currentUser(): Promise<IUser> {
-        return await handleApiRequest<IUser>(() =>
-            this.axiosInstance.get("/users/me")
-        );
-    }
-
 }
 
 const apiURL = `http://localhost:3000/api/v1`;

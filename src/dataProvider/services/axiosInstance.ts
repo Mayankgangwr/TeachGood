@@ -5,7 +5,7 @@ const axiosInstance: AxiosInstance = axios.create({
     baseURL: `http://localhost:3000/api/v1`,
     withCredentials: true, // Ensure cookies (access and refresh token) are sent with request.
     headers: {
-        "Content-Type": 'application/json', // Set default content type
+        "Content-Type": 'multipart/form-data', // Set default content type
     },
 });
 

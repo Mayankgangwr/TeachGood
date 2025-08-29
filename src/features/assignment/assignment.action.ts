@@ -14,3 +14,18 @@ export const getAssignmentById = createReduxThunk<any, string>(
         return response;
     }
 );
+
+export const getAssignments = createReduxThunk<any>(
+    'assignments/list',
+    async () => {
+        const response = await assignmentController.getAssignments();
+        return response;
+    }
+);
+
+
+
+export const submitAssignment = createReduxThunk<any, any>(
+    'assignments/insert-assignment',
+    async (payload) => await assignmentController.submitAssignment(payload)
+);

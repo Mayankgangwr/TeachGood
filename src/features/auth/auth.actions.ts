@@ -2,6 +2,7 @@ import authController from '../../dataProvider/controllers/auth.controller'
 import type { IAuthData, IUser } from '../../types/response.types'
 import type { IAuthPayload } from '../../types/payload.types'
 import { createReduxThunk, createReduxThunkNoArg } from '../../utils/createAsyncThunkWithLoader';
+import assignmentController from '../../dataProvider/controllers/assignment.controller';
 
 export const loginUser = createReduxThunk<IAuthData, IAuthPayload>(
     'auth/login',
@@ -10,7 +11,7 @@ export const loginUser = createReduxThunk<IAuthData, IAuthPayload>(
 
 export const currentUser = createReduxThunkNoArg<IUser>(
     'auth/current-user',
-    async () => await authController.currentUser()
+    async () => await assignmentController.currentUser()
 );
 
 

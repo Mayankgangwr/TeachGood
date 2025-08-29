@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom'
 import { createBrowserRouter } from 'react-router-dom'
 
-import { LoginPage, HomePage, MyLearningPage } from './pages'
+import { LoginPage, HomePage, MyLearningPage, Assignments } from './pages'
 import { AuthLayout, Layout } from './components'
 import ToastManager from './components/Toaster'
 import SingleAssignment from './pages/Assignments/SingleAssignment'
@@ -17,6 +17,14 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={true}>
             <HomePage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: '/assignments',
+        element: (
+          <AuthLayout authentication={true}>
+            <Assignments />
           </AuthLayout>
         ),
       },

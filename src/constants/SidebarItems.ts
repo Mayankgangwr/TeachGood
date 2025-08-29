@@ -32,12 +32,12 @@ export const teacherSidebarItems: IMenuItem[] = [
   {
     icon: LayoutGrid,
     label: 'Dashboard',
-    path: '/teacher/dashboard',
+    path: '/',
   },
   {
     icon: Users,
     label: 'My Students',
-    path: '/teacher/students',
+    path: '/students',
     // links: [
     //   { label: 'Student List', link: '/teacher/students', icon: GraduationCap },
     //   { label: 'Performance', link: '/teacher/students/performance', icon: BarChart3 }
@@ -46,12 +46,12 @@ export const teacherSidebarItems: IMenuItem[] = [
   {
     icon: CalendarCheck,
     label: 'Attendance',
-    path: '/teacher/attendance'
+    path: '/attendance'
   },
   {
     icon: ClipboardList,
     label: 'Assignments',
-    path: '/teacher/assignments',
+    path: '/assignments',
     // links: [
     //   { label: 'All Assignments', link: '/teacher/assignments', icon: ListChecks },
     //   { label: 'Create Assignment', link: '/teacher/assignments/create', icon: PlusCircle }
@@ -60,7 +60,7 @@ export const teacherSidebarItems: IMenuItem[] = [
   {
     icon: BookOpen,
     label: 'Courses',
-    path: '/teacher/courses',
+    path: '/courses',
     // links: [
     //   { label: 'My Courses', link: '/teacher/courses', icon: BookOpen },
     //   { label: 'Add Course', link: '/teacher/courses/add', icon: PlusCircle }
@@ -69,7 +69,7 @@ export const teacherSidebarItems: IMenuItem[] = [
   {
     icon: Settings,
     label: 'Settings',
-    path: '/teacher/settings'
+    path: '/settings'
   },
 ];
 
@@ -77,17 +77,17 @@ export const studentSidebarItems: IMenuItem[] = [
   {
     icon: LayoutGrid,
     label: 'Dashboard',
-    path: '/student/dashboard'
+    path: '/'
   },
   {
     icon: BookOpen,
     label: 'My Courses',
-    path: '/student/courses'
+    path: '/courses'
   },
   {
     icon: ClipboardList,
     label: 'Assignments',
-    path: '/student/assignments',
+    path: '/assignments',
     // links: [
     //   { label: 'View Assignments', link: '/student/assignments', icon: FileText },
     //   { label: 'Submit Assignment', link: '/student/assignments/submit', icon: Send }
@@ -96,16 +96,16 @@ export const studentSidebarItems: IMenuItem[] = [
   {
     icon: Calendar,
     label: 'Schedule',
-    path: '/student/schedule'
+    path: '/schedule'
   },
   {
     icon: Users,
     label: 'Classmates',
-    path: '/student/classmates'
+    path: '/classmates'
   },
   {
     icon: Settings,
     label: 'Settings',
-    path: '/student/settings'
+    path: '/settings'
   },
 ];
