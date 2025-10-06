@@ -74,7 +74,7 @@ const TeachersPage: React.FC = () => {
                         <div
                             className={clsx(
                                 Styles.TeacherList,
-                                "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6"
+                                "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3 lg:gap-4"
                             )}
                         >
                             {teachers.map((teacher) => (
