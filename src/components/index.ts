@@ -41,6 +41,7 @@ import AssignSubjectForm from "./Batches/AssignSubjectForm";
 import Persona from "./Persona";
 import StudentCard from "./Students/StudentCard";
 import InfoItem from "./InfoItem";
+import AssignmentForm from "./Assignments/AssignmentForm";
 
 export {
     AuthLayout,
@@ -87,5 +88,6 @@ export {
     AssignSubjectForm,
     Persona,
     StudentCard,
-    InfoItem
+    InfoItem,
+    AssignmentForm
 }

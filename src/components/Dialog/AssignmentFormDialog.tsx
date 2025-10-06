@@ -6,6 +6,7 @@ import { useAppSelector } from "../../hooks/redux.hook";
 import Input from "../Fields/Input";
 
 import Editor from "../Fields/Editor";
+import { EditorContent } from "@tiptap/react";
 
 interface AssignmentFormDialogProps {
   isOpen: boolean;

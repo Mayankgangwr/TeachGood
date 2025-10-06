@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux.hook";
-import { BoxContainer, Button, Container, DocBtn, LinkBtn, NoItems } from "../../components";
+import { AssignmentForm, BoxContainer, Button, Container, DocBtn, LinkBtn, NoItems } from "../../components";
 import { getAssignmentById, getAssignments } from "../../features/assignment/assignment.action";
 import { useNavigate } from "react-router-dom";
 import { toggleSubmitAssignmentDialog } from "../../features/assignment/assignment.slice";
@@ -51,7 +51,7 @@ const Assignments = () => {
                         <Button
                             variant="primary"
                             size="md"
-                            onClick={() => { }}
+                            onClick={() => handleModelToggle("", "ADD")}
                         >
                             Add New Batch
                         </Button>
@@ -137,10 +137,12 @@ const Assignments = () => {
                                 </Button>
                             </footer>
                         </div>
-                    ))
-                        : (
-                            <NoItems title={"Assignment"} />
-                        )}
+                    )) : (
+                        <NoItems title={"Assignment"} />
+                    )}
+                    {(formModel.type === "ADD" || formModel.type === "EDIT") && (
+                        <AssignmentForm formModel={formModel} handleModelToggle={handleModelToggle} />
+                    )}
                     {formModel.toggle && (
                         <AssignmentSubmitForm />
                     )}
