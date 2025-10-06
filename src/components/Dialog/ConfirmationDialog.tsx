@@ -46,10 +46,11 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
             description={description}
             actions={
                 <>
-                    <Button variant="secondary" onClick={onClose} disabled={loading}>
+                    <Button size="md" variant="secondary" onClick={onClose} disabled={loading}>
                         {cancelLabel}
                     </Button>
                     <Button
+                        size="md"
                         variant={isDanger ? "danger" : "primary"}
                         onClick={handleConfirm}
                         isLoading={loading}

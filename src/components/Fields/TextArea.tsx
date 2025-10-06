@@ -5,16 +5,17 @@ interface ITextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElemen
     label?: string;
     error?: string;
     maxHeight?: number;
+    minHeight?: number;
 }
 
-const TextArea: React.FC<ITextAreaProps> = ({ label, error, maxHeight = 300, className, ...props }) => {
+const TextArea: React.FC<ITextAreaProps> = ({ label, error, minHeight= 180, maxHeight = 300, className, ...props }) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     // Auto-resize function
     const resizeTextarea = () => {
         if (textareaRef.current) {
             textareaRef.current.style.height = "auto"; // reset height
-            textareaRef.current.style.minHeight = `180px`;
+            textareaRef.current.style.minHeight = `${minHeight}px`;;
             textareaRef.current.style.maxHeight = `${maxHeight}px`;
             textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
         }

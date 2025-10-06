@@ -1,22 +1,34 @@
 // services/AuthController.ts
-import axios, { type AxiosInstance } from "axios";
 import { handleApiRequest } from "../../utils/apiRequest";
-import type { IAuthPayload } from "../../types/payload.types";
+import type { IAuthPayload, IUserRegisterPayload } from "../../types/payload.types";
 import type { IAuthData, IAuthToken, IUser } from "../../types/response.types";
-
+import axiosInstance from "../services/axiosInstance";
 export class AuthController {
-    private axiosInstance: AxiosInstance;
+    async register(registerPayload: IUserRegisterPayload): Promise<IAuthData> {
+        const data = await handleApiRequest<IAuthData>(() =>
+            axiosInstance.post("/auth/register", registerPayload)
+        );
 
-    constructor(apiURL: string) {
-        this.axiosInstance = axios.create({
-            baseURL: apiURL,
-            withCredentials: true,
-        });
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+
+        return data;
+    }
+
+    async verifyEmail(token: string): Promise<IAuthData> {
+        const data = await handleApiRequest<IAuthData>(() =>
+            axiosInstance.get(`/auth/verify-email${token}`)
+        );
+
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+
+        return data;
     }
 
     async login(authPayload: IAuthPayload): Promise<IAuthData> {
         const data = await handleApiRequest<IAuthData>(() =>
-            this.axiosInstance.post("/users/login", authPayload)
+            axiosInstance.post("/auth/login", authPayload)
         );
 
         localStorage.setItem("accessToken", data.accessToken);
@@ -27,13 +39,13 @@ export class AuthController {
 
     async refreshToken(refreshToken?: string): Promise<IAuthToken> {
         return await handleApiRequest<IAuthToken>(() =>
-            this.axiosInstance.post("/users/refresh-token", { refreshToken })
+            axiosInstance.post("/auth/refresh-token", { refreshToken })
         );
     }
 
     async logout(): Promise<void> {
         try {
-            await this.axiosInstance.post("/users/logout");
+            await axiosInstance.post("/auth/logout");
         } catch (error) {
             console.warn("Logout failed:", error);
         } finally {
@@ -42,8 +54,12 @@ export class AuthController {
         }
     }
 
+    public async currentUser() {
+        return await handleApiRequest<IUser>(() =>
+            axiosInstance.get("/auth/me")
+        );
+    }
 }
 
-const apiURL = `http://localhost:3000/api/v1`;
-const authController = new AuthController(apiURL);
+const authController = new AuthController();
 export default authController;

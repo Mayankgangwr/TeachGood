@@ -1,8 +1,8 @@
 import React, { type ButtonHTMLAttributes, type FC } from "react";
 import { Loader2 } from "../Loader";
 import Styles from "./Button.module.scss"
-type Variant = "primary" | "secondary" | "danger" | "ghost";
-type Size = "sm" | "md" | "lg";
+export type Variant = "primary" | "secondary" | "danger" | "ghost";
+export type Size = "sm" | "md" | "lg";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: Variant;
@@ -13,6 +13,12 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fullWidth?: boolean;
     children: React.ReactNode;
 }
+
+interface ILinkBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children: React.ReactNode;
+    size: Size
+}
+
 
 const Button: FC<IButtonProps> = ({
     variant = "danger",
@@ -38,9 +44,9 @@ const Button: FC<IButtonProps> = ({
     };
 
     const sizeClasses: Record<Size, string> = {
-        sm: "px-[12px] py-[5px] text-sm font-semibold min-w-24 rounded-sm",
-        md: "px-[14px] py-[7px] text-base font-semibold min-w-28 rounded-[6px]",
-        lg: "px-[16px] py-[9px] text-xl font-bold min-w-32 rounded-[8px]",
+        sm: "px-[6px] py-[3px] text-sm font-semibold min-w-24 rounded-sm",
+        md: "px-[8px] py-[4px] text-base font-semibold min-w-28 rounded-[3px]",
+        lg: "px-[12px] py-[6px] text-xl font-bold min-w-32 rounded-[4px]",
     };
 
     const widthClass = fullWidth ? "w-full" : "";
@@ -63,5 +69,22 @@ const Button: FC<IButtonProps> = ({
         </button>
     );
 };
+
+
+export const LinkBtn: FC<ILinkBtnProps> = ({ children, size = 'sm', ...props }) => {
+
+    const sizeClasses: Record<Size, string> = {
+        sm: "text-sm font-semibold",
+        md: "text-base font-semibold",
+        lg: "text-xl font-bold",
+    };
+
+    return <button
+        className={`text-indigo-600 hover:underline ${sizeClasses[size]}`}
+        {...props}
+    >
+        {children}
+    </button>
+}
 
 export default Button;

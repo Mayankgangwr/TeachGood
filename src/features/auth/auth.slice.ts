@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { IUser } from '../../types/response.types';
-import { currentUser, loginUser, logoutUser } from './auth.actions';
+import { currentUser, loginUser, logoutUser, registerUser, verifyEmail } from './auth.actions';
 import { showToast } from '../../components/Toaster';
 
 
@@ -11,6 +11,7 @@ interface AuthState {
   loading: boolean;
   error: string | null;
   initialized: boolean;
+  token: string | undefined;
 }
 
 const initialState: AuthState = {
@@ -20,6 +21,7 @@ const initialState: AuthState = {
   loading: false,
   error: null,
   initialized: false,
+  token: undefined
 };
 
 
@@ -43,6 +45,44 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // registerUser
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.accessToken = action.payload.accessToken;
+        state.token = action.payload.url
+        state.isAuthenticated = true;
+        state.initialized = true;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+        state.initialized = true;
+      })
+
+      // verify-email
+      .addCase(verifyEmail.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(verifyEmail.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.accessToken = action.payload.accessToken;
+        state.token = undefined
+        state.isAuthenticated = true;
+        state.initialized = true;
+      })
+      .addCase(verifyEmail.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+        state.initialized = true;
+      })
+
       // loginUser
       .addCase(loginUser.pending, (state) => {
         state.loading = true;

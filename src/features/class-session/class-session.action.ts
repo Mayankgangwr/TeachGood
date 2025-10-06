@@ -30,3 +30,13 @@ export const getClassById = createReduxThunk<any, string>(
         return response;
     }
 );
+
+export const deleteClass = createReduxThunk<any, string>(
+    'classes/delete',
+    async (classId) => {
+        const response = await classSessionController.deleteClass(classId);
+        return response;
+    }
+);
+
+

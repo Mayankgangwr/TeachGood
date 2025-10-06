@@ -1,8 +1,19 @@
 import authController from '../../dataProvider/controllers/auth.controller'
 import type { IAuthData, IUser } from '../../types/response.types'
-import type { IAuthPayload } from '../../types/payload.types'
+import type { IAuthPayload, IUserRegisterPayload } from '../../types/payload.types'
 import { createReduxThunk, createReduxThunkNoArg } from '../../utils/createAsyncThunkWithLoader';
-import assignmentController from '../../dataProvider/controllers/assignment.controller';
+
+
+export const registerUser = createReduxThunk<IAuthData, IUserRegisterPayload>(
+    'auth/register',
+    async (payload) => await authController.register(payload)
+);
+
+export const verifyEmail = createReduxThunk<IAuthData, string>(
+    'auth/verify-email',
+    async (payload) => await authController.verifyEmail(payload)
+);
+
 
 export const loginUser = createReduxThunk<IAuthData, IAuthPayload>(
     'auth/login',
@@ -11,7 +22,7 @@ export const loginUser = createReduxThunk<IAuthData, IAuthPayload>(
 
 export const currentUser = createReduxThunkNoArg<IUser>(
     'auth/current-user',
-    async () => await assignmentController.currentUser()
+    async () => await authController.currentUser()
 );
 
 

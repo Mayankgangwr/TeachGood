@@ -1,9 +1,10 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { getAssignmentById, getAssignments, submitAssignment } from "./assignment.action";
+import { getAssignmentById, getAssignments, insertAssignment, submitAssignment, updateAssignment } from "./assignment.action";
 
 interface IAssignmentState {
   currentAssignment: any;
-  assignments: any[];
+  records: any[];
+  total: number;
   submittedAssignment: any;
   loading: boolean;
   isAddAssignmentDialogOpen: boolean;
@@ -12,7 +13,8 @@ interface IAssignmentState {
 
 const initialState: IAssignmentState = {
   currentAssignment: null,
-  assignments: [],
+  records: [],
+  total: 0,
   submittedAssignment: null,
   loading: false,
   isAddAssignmentDialogOpen: false,
@@ -35,6 +37,32 @@ const assignment = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(insertAssignment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(insertAssignment.fulfilled, (state, action) => {
+        state.loading = false;
+        state.records.push(action.payload);
+      })
+      .addCase(insertAssignment.rejected, (state) => {
+        state.loading = false;
+      });
+
+    builder
+      .addCase(updateAssignment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateAssignment.fulfilled, (state, action) => {
+        state.loading = false;
+        const updated = action.payload;
+        const index = state.records.findIndex(assignment => assignment._id === updated._id);
+        if (index !== -1) state.records[index] = updated;
+      })
+      .addCase(updateAssignment.rejected, (state) => {
+        state.loading = false;
+      });
+
+    builder
       .addCase(getAssignmentById.pending, (state) => {
         state.loading = true;
       })
@@ -50,7 +78,9 @@ const assignment = createSlice({
         state.loading = true;
       })
       .addCase(getAssignments.fulfilled, (state, action) => {
-        state.assignments = action.payload;
+        const { records, total } = action.payload;
+        state.records = records;
+        state.total = total
         state.loading = false;
       })
       .addCase(getAssignments.rejected, (state) => {
@@ -58,9 +88,6 @@ const assignment = createSlice({
       });;
 
     builder
-      .addCase(submitAssignment.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(submitAssignment.fulfilled, (state, action) => {
         state.submittedAssignment = action.payload;
         state.loading = false;

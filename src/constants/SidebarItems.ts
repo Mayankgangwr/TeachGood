@@ -1,18 +1,19 @@
 import {
-  LayoutGrid,
-  Users,
   ClipboardList,
-  CalendarCheck,
   BookOpen,
+  BookMarked, // ✅ Add this
   Settings,
   Calendar,
   GraduationCap,
-  BarChart3,
-  PlusCircle,
-  ListChecks,
-  FileText,
-  Send
+  School,
+  CheckSquare,
+  Layers,
+  User,
+  LayoutDashboard,
+  ClipboardCheck
 } from 'lucide-react';
+
+import { UserRoles, type Role } from '.';
 
 interface Link {
   label: string;
@@ -26,86 +27,88 @@ export interface IMenuItem {
   initiallyOpened?: boolean;
   path: string;
   links?: Link[];
+  access?: Role[];
 }
 
-export const teacherSidebarItems: IMenuItem[] = [
+export const sidebarMenuItems: IMenuItem[] = [
   {
-    icon: LayoutGrid,
-    label: 'Dashboard',
-    path: '/',
+    label: "Dashboard",
+    icon: LayoutDashboard,
+    path: "/",
   },
   {
-    icon: Users,
-    label: 'My Students',
-    path: '/students',
-    // links: [
-    //   { label: 'Student List', link: '/teacher/students', icon: GraduationCap },
-    //   { label: 'Performance', link: '/teacher/students/performance', icon: BarChart3 }
-    // ]
+    label: "Departments",
+    icon: School,
+    path: "/departments",
+    access: [UserRoles.Admin],
   },
   {
-    icon: CalendarCheck,
-    label: 'Attendance',
-    path: '/attendance'
-  },
-  {
-    icon: ClipboardList,
-    label: 'Assignments',
-    path: '/assignments',
-    // links: [
-    //   { label: 'All Assignments', link: '/teacher/assignments', icon: ListChecks },
-    //   { label: 'Create Assignment', link: '/teacher/assignments/create', icon: PlusCircle }
-    // ]
-  },
-  {
+    label: "Courses",
     icon: BookOpen,
-    label: 'Courses',
-    path: '/courses',
+    path: "/courses",
+    access: [UserRoles.Admin],
+    initiallyOpened: true,
     // links: [
-    //   { label: 'My Courses', link: '/teacher/courses', icon: BookOpen },
-    //   { label: 'Add Course', link: '/teacher/courses/add', icon: PlusCircle }
-    // ]
+    //   {
+    //     label: "All Courses",
+    //     link: "/courses/all",
+    //     icon: List,
+    //   },
+    //   {
+    //     label: "Add Course",
+    //     link: "/courses/add",
+    //     icon: PlusCircle,
+    //   },
+    // ],
   },
   {
-    icon: Settings,
-    label: 'Settings',
-    path: '/settings'
-  },
-];
-
-export const studentSidebarItems: IMenuItem[] = [
-  {
-    icon: LayoutGrid,
-    label: 'Dashboard',
-    path: '/'
+    label: "Subjects",
+    icon: BookMarked, 
+    path: "/subjects",
+    access: [UserRoles.Admin, UserRoles.Teacher],
   },
   {
-    icon: BookOpen,
-    label: 'My Courses',
-    path: '/courses'
+    label: "Batches",
+    icon: Layers,
+    path: "/batches",
   },
   {
-    icon: ClipboardList,
-    label: 'Assignments',
-    path: '/assignments',
-    // links: [
-    //   { label: 'View Assignments', link: '/student/assignments', icon: FileText },
-    //   { label: 'Submit Assignment', link: '/student/assignments/submit', icon: Send }
-    // ]
+    label: "Enrollments",
+    icon: ClipboardCheck,
+    path: "/enrollments",
   },
   {
+    label: "Students",
+    icon: GraduationCap,
+    path: "/students",
+    access: [UserRoles.Admin, UserRoles.Teacher],
+  },
+  {
+    label: "Teachers",
+    icon: User,
+    path: "/teachers",
+    access: [UserRoles.Admin],
+  },
+  {
+    label: "Classes",
     icon: Calendar,
-    label: 'Schedule',
-    path: '/schedule'
+    path: "/classes",
   },
   {
-    icon: Users,
-    label: 'Classmates',
-    path: '/classmates'
+    label: "Assignments",
+    icon: ClipboardList,
+    path: "/assignments",
   },
   {
+    label: "Attendance",
+    icon: CheckSquare,
+    path: "/attendance",
+    access: [UserRoles.Admin, UserRoles.Teacher],
+  },
+  {
+    label: "Settings",
     icon: Settings,
-    label: 'Settings',
-    path: '/settings'
+    path: "/settings",
+    access: [UserRoles.Admin],
   },
 ];

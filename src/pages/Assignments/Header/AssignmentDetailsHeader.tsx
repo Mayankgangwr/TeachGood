@@ -1,11 +1,10 @@
 import React from "react";
 
 import clsx from "clsx";
-import { Button } from "../../../components";
 import AssignmentForm from "../AssignmentForm";
 import { useAppSelector } from "../../../hooks/redux.hook";
-import { UserRoles } from "../../../constants";
 import { useNavigate } from "react-router-dom";
+import { formatteDate } from "../../../utils/date-time";
 
 interface AssignmentDetailsHeaderProps {
     studentName: string;
@@ -24,12 +23,7 @@ const AssignmentDetailsHeader: React.FC<AssignmentDetailsHeaderProps> = ({
 }) => {
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.auth.user);
-    const formattedDueDate = new Date(dueDate).toLocaleDateString("en-IN", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+    const formattedDueDate = formatteDate(dueDate);
 
     const getInitials = (name: string) => {
         const parts = name.trim().split(" ");

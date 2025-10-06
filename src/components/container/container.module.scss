@@ -8,5 +8,12 @@
 // }
 
 .container {
-    @apply w-full h-[100vh] bg-[#eff3f4] pt-2 md:pt-2 lg:pt-3 xl:pt-4 px-[6px] md:px-2 lg:px-3 xl:px-4;
+    min-height: calc(100vh - 60px);
+    height: auto;
+    padding-bottom: 0;
+}
+
+.boxContainer {
+    padding-bottom: 0;
+    min-height: calc(100vh - 76px);
 }

@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import {
-  studentSidebarItems,
-  teacherSidebarItems,
+  sidebarMenuItems,
   type IMenuItem,
 } from "../../../constants/SidebarItems";
 import { useAppSelector } from "../../../hooks/redux.hook";
-import { UserRoles } from "../../../constants";
+import { type Role } from "../../../constants";
 
 const MobileMenuNavbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [sidebarItems, setSidebarItems] = useState<IMenuItem[]>([]);
   const { user } = useAppSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (user?.role === UserRoles.Teacher) {
-      setSidebarItems(() => teacherSidebarItems);
-    } else {
-      setSidebarItems(() => studentSidebarItems);
-    }
-  }, [user?.role]);
 
   const handleMainClick = (item: IMenuItem, index: number) => {
     if (item.links && item.links.length > 0) {
@@ -37,7 +27,7 @@ const MobileMenuNavbar: React.FC = () => {
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-md">
       <div className="relative">
         <ul className="flex justify-between items-center px-4 py-2">
-          {sidebarItems.map((item, index) => {
+          {sidebarMenuItems.filter((item) => !item.access || item.access.includes(user?.role as Role)).map((item, index) => {
             const isActive = location.pathname.startsWith(item.path);
             const Icon: any = item.icon;
             const hasChildren = item.links && item.links.length > 0;

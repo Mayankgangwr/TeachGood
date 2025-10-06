@@ -10,9 +10,11 @@ interface ISelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
   options: Option[];
+  selectValue: string;
 }
 
-const Select: React.FC<ISelectProps> = ({ label, error, options, className, ...props }) => {
+const Select: React.FC<ISelectProps> = ({ label, error, options, selectValue, className, ...props }) => {
+  // const value = options.find((option) => option.value === selectValue)?.label;
   return (
     <div className="flex flex-col w-full">
       {label && (
@@ -34,8 +36,9 @@ const Select: React.FC<ISelectProps> = ({ label, error, options, className, ...p
             : "border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-300",
           className
         )}
+        value={selectValue}
       >
-        {options.map((opt) => (
+        {[{ label: `Select ${label}`, value: "" }, ...options].map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
           </option>

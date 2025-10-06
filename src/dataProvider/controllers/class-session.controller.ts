@@ -1,5 +1,5 @@
-// classes?studentId=6888ccd51efa01e0d5c14848
 import type { IClassSessionPayload } from "../../types/payload.types";
+import type { IClassSessionResponse } from "../../types/response.types";
 import { handleApiRequest } from "../../utils/apiRequest";
 import axiosInstance from "../services/axiosInstance";
 class ClassSessionController {
@@ -9,14 +9,12 @@ class ClassSessionController {
     }
 
     async updateClassSession(classId: string, sessionPayload: any): Promise<any> {
-        const response = await handleApiRequest<any>(() => axiosInstance.post("/classes", sessionPayload, {
-            params: { classId },
-        }));
+        const response = await handleApiRequest<any>(() => axiosInstance.patch(`/classes/${classId}`, sessionPayload));
         return response;
     }
 
-    async getClassSessionList(query: Record<string, any>): Promise<any> {
-        const response = await handleApiRequest<any>(() =>
+    async getClassSessionList(query: Record<string, any>) {
+        const response = await handleApiRequest<IClassSessionResponse[]>(() =>
             axiosInstance.get("/classes", {
                 params: query,
             })
@@ -30,6 +28,11 @@ class ClassSessionController {
                 params: { classId },
             })
         );
+        return response;
+    }
+
+    async deleteClass(classId: string): Promise<any> {
+        const response = await handleApiRequest<any>(() => axiosInstance.delete(`/classes/${classId}`));
         return response;
     }
 

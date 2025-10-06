@@ -13,7 +13,7 @@ interface IMenuItemProps {
     level?: number;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({ menuItem, level = 0 }) => {
+const ActionMenuItem: React.FC<IMenuItemProps> = ({ menuItem, level = 0 }) => {
     const { icon, title, path = "/", children = [] } = menuItem;
     const navigate = useNavigate();
     const location = useLocation();
@@ -53,7 +53,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({ menuItem, level = 0 }) => {
                     className={`absolute top-0 left-full mt-0 ml-1 min-w-[180px] bg-white border border-gray-200 shadow-lg rounded-lg z-50 py-1`}
                 >
                     {children.map((child) => (
-                        <MenuItem key={child.path} menuItem={child} level={level + 1} />
+                        <ActionMenuItem key={child.path} menuItem={child} level={level + 1} />
                     ))}
                 </ul>
             )}
@@ -61,4 +61,4 @@ const MenuItem: React.FC<IMenuItemProps> = ({ menuItem, level = 0 }) => {
     );
 };
 
-export default MenuItem;
+export default ActionMenuItem;

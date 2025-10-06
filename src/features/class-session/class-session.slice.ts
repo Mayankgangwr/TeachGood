@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getClasses } from "./class-session.action";
+import { deleteClass, getClasses, insertClass, updateClass } from "./class-session.action";
 import moment from "moment";
+import type { IClassSessionResponse } from "../../types/response.types";
+
 
 interface IClassSessionState {
-    currentClass: any;
-    classes: any[];
+    currentClass: IClassSessionResponse | null;
+    classes: IClassSessionResponse[];
+    total: number;
     learningReport: any[];
     totalHours: number;
     fetched: boolean;
@@ -13,9 +16,10 @@ interface IClassSessionState {
 const initialState: IClassSessionState = {
     currentClass: null,
     classes: [],
+    total: 0,
     learningReport: [],
     totalHours: 0,
-    fetched: false
+    fetched: false,
 };
 
 const COLOR_PALETTE = [
@@ -38,7 +42,8 @@ const classSession = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getClasses.fulfilled, (state, action) => {
             state.fetched = true;
-            const classes = action.payload || [];
+            const classes = action.payload.records || [];
+            state.total = action.payload.total || 0;
             state.classes = classes;
 
             const subjectHoursMap: Record<string, number> = {};
@@ -68,6 +73,23 @@ const classSession = createSlice({
             const totalHours = finalData.reduce((acc, curr) => acc + curr.hours, 0);
             state.learningReport = finalData;
             state.totalHours = totalHours;
+        });
+        builder.addCase(insertClass.fulfilled, (state, action) => {
+            state.classes.push(action.payload);
+            state.total = state.total + 1;
+        });
+        builder.addCase(updateClass.fulfilled, (state, action) => {
+            const updated = action.payload;
+            const index = state.classes.findIndex(cls => cls._id === updated._id);
+            if (index !== -1) state.classes[index] = updated;
+        });
+        builder.addCase(deleteClass.fulfilled, (state, action) => {
+            const classId = action.payload;
+            const index = state.classes.findIndex((cls) => cls._id === classId);
+            if (index !== -1) {
+                state.classes.splice(index, 1);
+                state.total = state.total - 1;
+            }
         });
     }
 });

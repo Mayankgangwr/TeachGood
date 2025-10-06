@@ -1,13 +1,13 @@
 import Styles from "./Sidebar.module.scss";
 import GroupLinks from "../../GroupLinks";
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../assets/Icons/Logo";
 import { useAppSelector } from "../../../hooks/redux.hook";
 import { LogOut } from 'lucide-react';
-import { UserRoles } from "../../../constants";
-import { studentSidebarItems, teacherSidebarItems, type IMenuItem } from "../../../constants/SidebarItems";
+import { sidebarMenuItems, type IMenuItem } from "../../../constants/SidebarItems";
 import Logout from "../../Logout/Logout";
+import type { Role } from "../../../constants";
 
 const Sidebar = () => {
     const { isAuthenticated, user } = useAppSelector((state) => state.auth);
@@ -21,16 +21,6 @@ const Sidebar = () => {
             navigate("/login");
         }
     }
-    const [sidebarItems, setSidebarItems] = useState<IMenuItem[]>([]);
-
-    useEffect(() => {
-        if (user?.role === UserRoles.Teacher) {
-            setSidebarItems(() => teacherSidebarItems);
-        } else {
-            setSidebarItems(() => studentSidebarItems)
-        }
-    }, [user?.role])
-
 
     return (
         <>
@@ -42,9 +32,14 @@ const Sidebar = () => {
                 </div>
 
                 <div className={Styles.links}>
-                    {sidebarItems.map((el: IMenuItem, index) => (
-                        <GroupLinks key={index} linkItem={el} />
-                    ))}
+                    {sidebarMenuItems
+                        .filter(
+                            (item) => !item.access || item.access.includes(user?.role as Role) // ✅
+                        )
+                        .map((el: IMenuItem, index) => (
+                            <GroupLinks key={index} linkItem={el} />
+                        ))}
+
                 </div>
 
                 <div className={Styles.footer}>
